@@ -1,0 +1,41 @@
+﻿@model Users
+@{
+    ViewBag.Title = "Yetkili Giriş Paneli";
+    Layout = "~/Views/Shared/_LayoutLog.cshtml";
+}
+
+<div class="container" id="wrap" >
+    <div class="row">
+        <div class="col-md-offset-4">
+            <div class="form-login">
+
+                <form action="@Url.Action("Index", "Login")" method="post" style="padding:5%;">
+                    <h4 class="text-center text-uppercase" style="font-family:Century; font-weight:900; font-size:larger; font-kerning:normal;">SAMPLE TERZİ BİLGİ SİSTEMİ</h4>
+                    <p>@Html.LabelFor(x => x.Mail,"Kullanıcı Adı")</p>
+                    <p>@Html.TextBoxFor(x => x.Mail, new { @class = "form-control input-sm", @placeholder = "kullaniciadi", @required = "required", @name = "username", @id = "username" })</p>
+                    <p>@Html.ValidationMessageFor(x => x.Mail)</p>
+                    <br />
+                    <p>@Html.LabelFor(x => x.Password,"Parola")</p>
+                    <p>@Html.TextBoxFor(x => x.Password, new { @class = "form-control input-sm", @placeholder = "*******", @required = "required", @type = "password", @name = "password", @id = "password" })</p>
+                    <p>@Html.ValidationMessageFor(x => x.Password)</p>
+                    <br />                    
+                    @{
+                        if (ViewBag.Mesaj != null)
+                        {
+                            <p style="color:red; text-align:center;">@ViewBag.Mesaj</p>
+                        }
+                    }
+                    <br />
+                    <div class="">
+                        <span class="group-btn">
+                            <input id="btnGiris" type="submit" value="Giriş Yap" class="form-control text-uppercase" style="background-color:#dedede; color:darkcyan; font-family:Century; font-weight:900;" />
+                        </span>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+

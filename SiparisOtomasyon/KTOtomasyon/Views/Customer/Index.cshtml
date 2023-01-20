@@ -1,0 +1,64 @@
+﻿@model KTOtomasyon.Models.DisplayCustomers
+@{
+    ViewBag.Title = "Müşteriler";
+}
+<br />
+<div class="content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="header">
+                <div class="col-lg-4">
+                    <h4 class="title" style="color:red;"><span class="fa fa-users"></span> &nbsp; Müşteriler</h4>
+                    <p class="category">Müşteri Listesi</p>
+                </div>
+                <div class="col-lg-8">
+                    <div class="category">
+                        <form action="@Url.Action("Index","Customers")" method="post">
+                            <div class="col-lg-10"><input name="filter" type="search" class="form-control text-danger" placeholder="Ad/Telefon Ara" /></div>
+                            <div class="col-lg-2"><input type="submit" role="img" value="Ara" class="btn btn-danger" /></div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <table class="table table-condensed">
+                            <tr>
+                                <td class="text-uppercase"><b>Müşteri Adı</b></td>
+                                <td class="text-uppercase"><b>Telefon Numarası</b></td>
+                                <td class="text-uppercase"><b></b></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            @foreach (var customer in Model.CustomerList.OrderByDescending(x => x.PhoneNumber))
+                            {
+                                <tr>
+                                    <td>@customer.CustomerName</td>
+                                    <td>@customer.PhoneNumber</td>
+                                </tr>
+                            }
+                        </table>
+                        <ul class="pagination pagination-sm">
+                            <li>
+                                @{
+                                    for (int i = 1; i <= Model.TotalPage; i++)
+                                    {
+                                        if (i == Model.CurrentPage)
+                                        {
+                                            @Html.ActionLink(i.ToString(), "Index", new { p = i }, new { @class = "text-danger" });
+
+                                        }
+                                        else
+                                        {
+                                            @Html.ActionLink(i.ToString(), "Index", new { p = i });
+                                        }
+                                    }
+                                }
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,28 @@
+﻿@model KTOtomasyon.Operations
+@{
+    ViewBag.Title = "OperationEdit";
+}
+
+<br />
+<div class="content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="header">
+                <h4 class="title" style="color:blue;"><span class="pe-7s-notebook"></span> &nbsp; Tadilat Bilgileri</h4>
+                <p class="category">Tadilat Güncelle</p>
+            </div>
+            <div class="content">
+                <form action="@Url.Action("OperationUpdate","Home")" method="post">
+                    <input name="Operation_Id" type="hidden" class="form-control" value="@Model.Operation_Id" />
+                    <input name="IsActive" type="hidden" class="form-control" value="@Model.IsActive" />
+                    <p>Ürün Adı:  @Html.DropDownListFor(m => m.Product_Id, new SelectList(ViewBag.VBProducts, "Product_Id", "Name"), new { @class = "form-control" })</p>
+                    <p>Tadilat Adı:  @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })</p>
+                    <p>Tutarı:  @Html.TextBoxFor(m => m.Price, new { @class = "form-control", @onkeypress = "return IsNumber(event)" })</p>
+                    <p><input class="btn btn-primary" type="submit" value="Değiştir" /></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KTOtomasyonModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Logs">
+    <Key>
+      <PropertyRef Name="Log_Id" />
+    </Key>
+    <Property Name="Log_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MethodName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ExMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedUser" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Operations">
+    <Key>
+      <PropertyRef Name="Operation_Id" />
+    </Key>
+    <Property Name="Operation_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Product_Id" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Price" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" />
+    <NavigationProperty Name="Products" Relationship="Self.FK_Operations_Products" FromRole="Operations" ToRole="Products" />
+    <NavigationProperty Name="OrderDetail" Relationship="Self.FK_OrderDetail_Operations" FromRole="Operations" ToRole="OrderDetail" />
+  </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="OrderDetail_Id" />
+    </Key>
+    <Property Name="OrderDetail_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Order_Id" Type="Int32" />
+    <Property Name="Operation_Id" Type="Int32" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="Price" Type="Decimal" Precision="12" Scale="6" />
+    <Property Name="TotalPrice" Type="Decimal" Precision="12" Scale="6" />
+    <NavigationProperty Name="Operations" Relationship="Self.FK_OrderDetail_Operations" FromRole="OrderDetail" ToRole="Operations" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK_OrderDetail_Orders" FromRole="OrderDetail" ToRole="Orders" />
+  </EntityType>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="Order_Id" />
+    </Key>
+    <Property Name="Order_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Debt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Addition" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="OrderDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedUser" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="IsPaid" Type="Boolean" />
+    <Property Name="IsDelivered" Type="Boolean" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="Discount" Type="Int32" />
+    <NavigationProperty Name="OrderDetail" Relationship="Self.FK_OrderDetail_Orders" FromRole="Orders" ToRole="OrderDetail" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Orders_CreatedUser" FromRole="Orders" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="Product_Id" />
+    </Key>
+    <Property Name="Product_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhotoUrl" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <NavigationProperty Name="Operations" Relationship="Self.FK_Operations_Products" FromRole="Products" ToRole="Operations" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="User_Id" />
+    </Key>
+    <Property Name="User_Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="Boolean" />
+    <Property Name="Birthday" Type="DateTime" Precision="3" />
+    <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserType" Type="Int32" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="IsActive" Type="Boolean" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_CreatedUser" FromRole="Users" ToRole="Orders" />
+    <NavigationProperty Name="Mails" Relationship="KTOtomasyonModel.FK_Mails_Users" FromRole="Users" ToRole="Mails" />
+  </EntityType>
+  <EntityType Name="vCustomers">
+    <Key>
+      <PropertyRef Name="CustomerName" />
+      <PropertyRef Name="PhoneNumber" />
+    </Key>
+    <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vOrders">
+    <Key>
+      <PropertyRef Name="Order_Id" />
+      <PropertyRef Name="CustomerName" />
+      <PropertyRef Name="PhoneNumber" />
+    </Key>
+    <Property Name="Order_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Debt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Addition" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="OrderDate" Type="DateTime" Precision="3" />
+    <Property Name="IsDelivered" Type="Boolean" />
+    <Property Name="Discount" Type="Int32" />
+    <Property Name="NetTotal" Type="Decimal" Precision="38" Scale="6" />
+    <Property Name="TotalPrice" Type="Decimal" Precision="38" Scale="6" />
+  </EntityType>
+  <Association Name="FK_Operations_Products">
+    <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+    <End Role="Operations" Type="Self.Operations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="Product_Id" />
+      </Principal>
+      <Dependent Role="Operations">
+        <PropertyRef Name="Product_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderDetail_Operations">
+    <End Role="Operations" Type="Self.Operations" Multiplicity="0..1" />
+    <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Operations">
+        <PropertyRef Name="Operation_Id" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="Operation_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderDetail_Orders">
+    <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
+    <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orders">
+        <PropertyRef Name="Order_Id" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="Order_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_CreatedUser">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="User_Id" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="CreatedUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="KTOtomasyonEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Logs" EntityType="Self.Logs" />
+    <EntitySet Name="Operations" EntityType="Self.Operations" />
+    <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" />
+    <EntitySet Name="Orders" EntityType="Self.Orders" />
+    <EntitySet Name="Products" EntityType="Self.Products" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <EntitySet Name="vCustomers" EntityType="Self.vCustomers" />
+    <EntitySet Name="vOrders" EntityType="Self.vOrders" />
+    <AssociationSet Name="FK_Operations_Products" Association="Self.FK_Operations_Products">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="Operations" EntitySet="Operations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderDetail_Operations" Association="Self.FK_OrderDetail_Operations">
+      <End Role="Operations" EntitySet="Operations" />
+      <End Role="OrderDetail" EntitySet="OrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderDetail_Orders" Association="Self.FK_OrderDetail_Orders">
+      <End Role="Orders" EntitySet="Orders" />
+      <End Role="OrderDetail" EntitySet="OrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_CreatedUser" Association="Self.FK_Orders_CreatedUser">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <EntitySet Name="vTotalOrder" EntityType="KTOtomasyonModel.vTotalOrder" />
+    <EntitySet Name="Mails" EntityType="KTOtomasyonModel.Mails" />
+    <EntitySet Name="vTodayTotalOrder" EntityType="KTOtomasyonModel.vTodayTotalOrder" />
+    <AssociationSet Name="FK_Mails_Users" Association="KTOtomasyonModel.FK_Mails_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Mails" EntitySet="Mails" />
+    </AssociationSet>
+    <EntitySet Name="vLastTotalOrder" EntityType="KTOtomasyonModel.vLastTotalOrder" />
+    <FunctionImport Name="AylikSiparisTutar" ReturnType="Collection(KTOtomasyonModel.AylikSiparisTutar_Result)" />
+    <FunctionImport Name="ToplaTutar" ReturnType="Collection(Decimal)">
+      <Parameter Name="firstodate" Mode="In" Type="DateTime" />
+      <Parameter Name="lastodate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="vTotalOrder">
+    <Key>
+      <PropertyRef Name="Sira" />
+    </Key>
+    <Property Name="Sira" Type="Int64" Nullable="false" />
+    <Property Name="Yil" Type="Int32" />
+    <Property Name="Ay" Type="Int32" />
+    <Property Name="Hafta" Type="Int32" />
+    <Property Name="SipMiktar" Type="Int32" />
+    <Property Name="SipTutar" Type="Decimal" Precision="38" Scale="6" />
+  </EntityType>
+  <EntityType Name="Mails">
+    <Key>
+      <PropertyRef Name="Mail_Id" />
+    </Key>
+    <Property Name="Mail_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MailSubject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MailBody" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MailTo" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="MailCC" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="MailBCC" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="IsBodyHtml" Type="Boolean" />
+    <Property Name="IsSend" Type="Boolean" />
+    <Property Name="SendDate" Type="DateTime" Precision="3" />
+    <Property Name="ErrorMessage" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedUser" Type="Int32" />
+    <NavigationProperty Name="Users" Relationship="KTOtomasyonModel.FK_Mails_Users" FromRole="Mails" ToRole="Users" />
+    <Property Name="MailFrom" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="vTodayTotalOrder">
+    <Key>
+      <PropertyRef Name="Sira" />
+    </Key>
+    <Property Name="Sira" Type="Int64" Nullable="false" />
+    <Property Name="SipMiktar" Type="Int32" />
+    <Property Name="SipTutar" Type="Decimal" Precision="38" Scale="6" />
+  </EntityType>
+  <Association Name="FK_Mails_Users">
+    <End Type="KTOtomasyonModel.Users" Role="Users" Multiplicity="0..1" />
+    <End Type="KTOtomasyonModel.Mails" Role="Mails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="User_Id" />
+      </Principal>
+      <Dependent Role="Mails">
+        <PropertyRef Name="CreatedUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="vLastTotalOrder">
+    <Key>
+      <PropertyRef Name="Sira" />
+    </Key>
+    <Property Name="Sira" Type="Int64" Nullable="false" />
+    <Property Name="SipMiktar" Type="Int32" />
+    <Property Name="SipTutar" Type="Decimal" Precision="38" Scale="6" />
+  </EntityType>
+  <ComplexType Name="AylikSiparisTutar_Result">
+    <Property Type="Decimal" Name="Ocak" Nullable="false" Precision="38" Scale="6" />
+    <Property Type="Decimal" Name="Subat" Nullable="false" Precision="38" Scale="6" />
+    <Property Type="Decimal" Name="Mart" Nullable="false" Precision="38" Scale="6" />
+    <Property Type="Decimal" Name="Nisan" Nullable="false" Precision="38" Scale="6" />
+    <Property Type="Decimal" Name="Mayis" Nullable="false" Precision="38" Scale="6" />
+    <Property Type="Decimal" Name="Haziran" Nullable="false" Precision="38" Scale="6" />
+    <Property Type="Decimal" Name="Temmuz" Nullable="false" Precision="38" Scale="6" />
+    <Property Type="Decimal" Name="Agustos" Nullable="false" Precision="38" Scale="6" />
+    <Property Type="Decimal" Name="Eylul" Nullable="false" Precision="38" Scale="6" />
+    <Property Type="Decimal" Name="Ekim" Nullable="false" Precision="38" Scale="6" />
+    <Property Type="Decimal" Name="Kasim" Nullable="false" Precision="38" Scale="6" />
+    <Property Type="Decimal" Name="Aralik" Nullable="false" Precision="38" Scale="6" />
+  </ComplexType>
+</Schema>

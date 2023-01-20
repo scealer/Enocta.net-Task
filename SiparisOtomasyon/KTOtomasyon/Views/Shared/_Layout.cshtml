@@ -1,0 +1,377 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" src="~/favicon.ico">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title> Sample Terzi </title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta http-equiv="refresh" content="600">
+    <meta name="viewport" content="width=device-width" />
+    <meta name="author" content="Zubeyir Kocalioglu" />
+
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/animate.min.css" rel="stylesheet" />
+    <link href="~/Content/light-bootstrap-dashboard.css" rel="stylesheet" />
+    <link href="~/Content/chosen.css" rel="stylesheet" />
+    <link href="~/Content/ImageSelect.css" rel="stylesheet" />
+    <link href="~/Content/demo.css" rel="stylesheet" />
+    <link href="~/Content/Flat.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/simplePagination.css" rel="stylesheet" />
+    <link href="~/Content/CSS/font-awesome.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="wrapper">
+        <div class="sidebar" data-color="red" data-image="~/Content/img/sidebar-5.jpg">
+            <div class="sidebar-wrapper">
+                <div class="logo">
+                    <a href="@Url.Action("Index", "Home")" class="simple-text">
+                        <img src="~/img/logooldu.png" width="96" height="52" />
+                        <br />
+                    </a>
+                </div>
+                <ul class="nav">
+                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
+                        <a href="@Url.Action("Index", "Home")">
+                            <i class="fa fa-home"></i>
+                            <p>Genel</p>
+                        </a>
+                    </li>
+                    @*<li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Products" ? "active" : "")">
+                            <a href="@Url.Action("Products", "Home")">
+                                <i class="fa fa-tasks"></i>
+                                <p>Ürünler</p>
+                            </a>
+                        </li>*@
+
+                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Operations" ? "active" : "")">
+                        <a href="@Url.Action("Operations", "Home")">
+                            <i class="fa fa-flash"></i>
+                            <p>Tadilatlar</p>
+                        </a>
+                    </li>
+                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Users" ? "active" : "")">
+                        <a href="@Url.Action("Users", "Home")">
+                            <i class="fa fa-users"></i>
+                            <p>Kullanıcılar</p>
+                        </a>
+                    </li>
+                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" && ViewContext.RouteData.Values["Controller"].ToString() == "Customer" ? "active" : "")">
+                        <a href="@Url.Action("Index", "Customer")">
+                            <i class="fa fa-phone"></i>
+                            <p>Müşteriler</p>
+                        </a>
+                    </li>
+                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Reports" ? "active" : "")">
+                        <a href="@Url.Action("Reports", "Home")">
+                            <i class="fa fa-bar-chart"></i>
+                            <p>Raporlar</p>
+                        </a>
+                    </li>
+                    <li class="active-pro">
+                        <p class="copyright text-left">
+                            <a href="#" class="label">
+                                EHızarcı &copy;
+                                @DateTime.Now.Year
+                            </a>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="main-panel">
+            <nav class="navbar navbar-default navbar-fixed">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            @{
+                                if (Session["UserId"] != null)
+                                {
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                            @Session["Name"].ToString()
+                                            <b class="caret hidden-sm hidden-xs"></b>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a href="@Url.Action("Support", "Login")">
+                                                    İletişim
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Action("UserProfile", "Login", new { id = Session["UserId"]})">
+                                                    Profil Bilgileri
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Action("AboutMe", "Home")">
+                                                    Yedek Al
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Action("LogOut", "Login")">
+                                                    Çıkış
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                }
+
+                            }
+                            @if (Session["UserId"] == null)
+                            {
+                                <li>
+
+                                    <a href="@Url.Action("Index","Login")" class="btn btn-default pull-right">
+                                        Sisteme Giriş
+                                    </a>
+                                </li>
+                            }
+                            <li class="separator hidden-lg hidden-md"></li>
+                        </ul>
+
+                    </div>
+                </div>
+            </nav>
+            <div>
+                @RenderBody()
+
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="contactLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    <button type="button" class="close" data-dismiss="modal" id="modalkapat"><b style="color:darkred !important;"><span class="fa fa-close"></span></b></button>
+                    <h4 class="panel-title" id="contactLabel"><span class="fa fa-plus-circle"></span> Yeni Sipariş</h4>
+                </div>
+                <form id="frmSiparis">
+                    <div class="modal-body" style="padding: 5px;">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    @Html.Hidden("CreatedDate", DateTime.Now, new { @class = "form-control", @placeholder = "Tarih", @id = "txtMCTarihi", @type = "hidden" })
+                                    @Html.Hidden("Order_Id", "0", new { @class = "form-control", @id = "txtMOrderId" })
+                                    <h6 class="text-uppercase">Telefon No</h6>
+                                    <div class="row">
+                                        <div class="col-lg-11 pull-left">
+                                            @Html.TextBox("PhoneNumber", "", new { @class = "form-control", @tabindex = "1", @placeholder = "555 444 33 22", @id = "txtMTelefon", @onkeypress = "return IsNumber(event)", @maxlength = "10" })
+                                        </div>
+                                        <div class="col-lg-1 pull-right">
+                                            <button id="btnTelefonBul" class="btn-xs btn btn-default" onclick="txtTelefonGetir(); return false;"><span class="fa fa-search"></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <h6 class="text-uppercase"> Teslim Tarihi </h6>
+                                    @Html.TextBox("OrderDate", DateTime.Now.ToShortDateString(), new { @class = "form-control", @tabindex = "3", @placeholder = "Tarih", @id = "txtMSTarihi" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                                <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 10px;">
+                                    <h6 class="text-uppercase pull-left">Müşteri Ad/Soyad</h6>
+                                    @Html.TextBox("CustomerName", "", new { @class = "form-control", @tabindex = "2", @placeholder = "İsim soyisim", @id = "txtMAdi" })
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6" style="padding-bottom: 10px;">
+                                    <h6 class="text-uppercase"> Alınan Tutar </h6>
+                                    @Html.TextBox("Debt", "", new { @class = "form-control", @tabindex = "4", @id = "txtMDebt" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="row">
+                            <div class="col-lg-offset-5">
+                                <input type="radio" id="rdbDefault" name="rdbDefault" value="0" class="radio-inline" onclick="TekliGoster()" /> Tekli Sipariş
+                                <input type="radio" id="rdbTadilat" name="rdbDefault" value="1" class="radio-inline" onclick="CokluGoster()" /> Çoklu Sipariş
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4" style="margin-left:30%;">
+                                <input type="hidden" name="txtUrun" id="txtUrun" class="form-control" />
+                                @*<input type="hidden" name="txtTadilatID" id="txtTadilatID" class="form-control" />
+                                    <input type="hidden" name="txtTadilatName" id="txtTadilatName" class="form-control" />*@
+                                <div id="drpMIslemListeID2">
+                                    <select class="my-select2" name="ofilter" title="İşlem Listesi" id="drpMIslemListe2">
+                                        <option>İşlem Seç..</option>
+                                    </select>
+                                </div>
+                                <input type="text" name="txtPara" id="txtPara" class="form-control" placeholder="Tutar giriniz.." maxlength="5" onkeypress="return IsNumber(event)" />
+                            </div>
+                            <div class="col-sm-4">
+                                <input id="btnSiparisKaydet2" name="btnSiparisKaydet2" type="button" class="btn btn-warning" value="Kaydet" />
+                            </div>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="row" id="divTadilat">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="col-lg-3">
+                                    <select class="my-select" name="pfilter" title="Ürün Listesi" id="drpMUrunListe">
+                                        <option data-img-src="../img/productions/0'.png" value="0" disabled selected>Ürün Seç..</option>
+                                        <optgroup label="Kadın">
+                                            <option data-img-src="../img/k/1.jpg" value="1 ">Kap</option>
+                                            <option data-img-src="../img/k/2.jpg" value="2 ">Elbise</option>
+                                            <option data-img-src="../img/k/3.jpg" value="3 ">Abiye</option>
+                                            <option data-img-src="../img/k/4.png" value="4 ">Etek</option>
+                                            <option data-img-src="../img/k/5.jpg" value="5 ">Pardösü</option>
+                                            <option data-img-src="../img/k/6.jpg" value="6 ">Ferace</option>
+                                            <option data-img-src="../img/k/7.png" value="7 ">Tunik</option>
+                                            <option data-img-src="../img/k/8.jpg" value="8 ">Gömlek</option>
+                                            <option data-img-src="../img/k/9.jpg" value="9 ">Ceket</option>
+                                            <option data-img-src="../img/k/10.jpg" value="10">Bluz</option>
+                                            <option data-img-src="../img/k/11.jpg" value="11">Kaban</option>
+                                            <option data-img-src="../img/k/12.jpg" value="12">T-Shirt</option>
+                                            <option data-img-src="../img/k/13.png" value="13">Kaztüyü Mont</option>
+                                            <option data-img-src="../img/k/26.jpg" value="14">Kaztüyü Yelek</option>
+                                            <option data-img-src="../img/k/24.jpg" value="15">Klasik Yelek</option>
+                                            <option data-img-src="../img/k/23.png" value="16">Şişme Yelek</option>
+                                            <option data-img-src="../img/k/22.jpg" value="17">Şişme Mont</option>
+                                            <option data-img-src="../img/k/14.jpg" value="18">Pantolon</option>
+                                            <option data-img-src="../img/k/15.jpg" value="19">Alt Eşofman</option>
+                                            <option data-img-src="../img/k/16.jpg" value="20">Üst Eşofman</option>
+                                            <option data-img-src="../img/k/18.jpg" value="21">Hırka</option>
+                                            <option data-img-src="../img/k/19.jpg" value="22">Kazak</option>
+                                            <option data-img-src="../img/k/20.jpg" value="23">Kapri</option>
+                                            <option data-img-src="../img/k/21.png" value="24">Manto</option>
+                                            <option data-img-src="../img/k/25.jpg" value="25">Şort</option>
+                                        </optgroup>
+                                        <optgroup label="Erkek">
+                                            <option data-img-src="../img/e/1.jpg" value="26">Alt Eşofman</option>
+                                            <option data-img-src="../img/e/2.jpg" value="27">Ceket</option>
+                                            <option data-img-src="../img/e/3.jpg" value="28">Gömlek</option>
+                                            <option data-img-src="../img/e/4.jpg" value="29">Hırka</option>
+                                            <option data-img-src="../img/e/5.jpeg" value="30">Kaban</option>
+                                            <option data-img-src="../img/e/6.jpg" value="31">Kapri</option>
+                                            <option data-img-src="../img/e/7.jpg" value="32">Kazak</option>
+                                            <option data-img-src="../img/e/8.jpg" value="33">Kaztüyü Mont</option>
+                                            <option data-img-src="../img/e/9.jpg" value="34">Kaztüyü Yelek</option>
+                                            <option data-img-src="../img/e/10.png" value="35">Klasik Yelek</option>
+                                            <option data-img-src="../img/e/11.jpg" value="36">Palto</option>
+                                            <option data-img-src="../img/e/12.jpg" value="37">Pantolon</option>
+                                            <option data-img-src="../img/e/13.jpg" value="38">Şişme Mont</option>
+                                            <option data-img-src="../img/e/14.jpg" value="39">Şişme Yelek</option>
+                                            <option data-img-src="../img/e/15.jpg" value="40">Şort</option>
+                                            <option data-img-src="../img/e/16.jpg" value="41">T-Shirt</option>
+                                            <option data-img-src="../img/e/17.jpg" value="42">Üst Eşofman</option>
+                                        </optgroup>
+                                        <optgroup label="Diğer">
+                                            <option data-img-src="../img/productions/0'.png" value="43">Diğer</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                                <div class="col-lg-3" id="drpMIslemListeID1">
+                                    <select class="my-select2" name="ofilter" title="İşlem Listesi" id="drpMIslemListe">
+                                        <option>İşlem Seç..</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-2">
+                                    @Html.TextBox("Quantity", "1", new { @class = "form-control", @placeholder = "Adet", @id = "txtMAdet", @type = "number" })
+                                </div>
+                                <div class="col-lg-2">
+                                    @Html.TextBox("Price", "0", new { @class = "form-control", @placeholder = "Tutar", @id = "txtMPrice", @onkeypress = "return IsNumber(event)" })
+                                </div>
+                                <div class="col-lg-1">
+                                    <input type="button" name="btnUrunEkle" value="Ekle" id="btnUrunEkle" class="btn btn-default pull-right" />
+                                </div>
+                                <div class="divider"></div>
+                                <br />
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <table class="table text-left" id="divOrderDetail">
+                                    <thead>
+                                        <tr>
+                                            <td></td>
+                                            <td class="text-uppercase"><b>Tadilat</b></td>
+                                            <td class="text-uppercase"><b>Adet</b></td>
+                                            <td class="text-uppercase"><b>B.Tutar</b></td>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tabloveri"><!--Tablo Dolduruluyor--></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer" style="margin-bottom:-14px;">
+                        <div class="col-lg-2">
+                            <b class="text-muted">Teslim: </b>
+                            <label class="custom-control custom-checkbox">
+                                @Html.TextBox("IsDelivered", "", new { @class = "custom-control-input", @id = "txtMDelivery", @type = "checkbox" })
+                                <span class="custom-control-indicator"></span>
+                            </label>
+                        </div>
+                        <div class="col-lg-2">
+                            <b class="text-muted">Ödeme: </b>
+                            <label class="custom-control custom-checkbox">
+                                @Html.TextBox("IsPaid", "", new { @class = "custom-control-input", @id = "txtMPaid", @type = "checkbox" })
+                                <span class="custom-control-indicator"></span>
+                            </label>
+                        </div>
+                        <div class="col-lg-2">
+                            <p class="col-lg-5  pull-left">
+                                <b class="text-muted">İndirim:</b>
+                            </p>
+                            <p class="col-lg-7  pull-right">
+                                @Html.TextBox("Discount", 0, new { @class = "form-control pull-right", @id = "txtMDiscount", @tabindex = "5", @type = "text", @placeholder = "0", @onkeypress = "return IsNumber(event)" })
+                            </p>
+                        </div>
+                        <div class="col-lg-4">
+                            <p class="col-lg-6  pull-left">
+                                <b class="text-muted">Açıklama:</b>
+                            </p>
+                            <p class="col-lg-6  pull-right">
+                                @Html.TextBox("Addition", "", new { @class = "form-control pull-left", @id = "txtMAddition", @tabindex = "6", @type = "text", @placeholder = "Açıklama" })
+                            </p>
+                        </div>
+                        <div class="col-lg-2">
+                            <input id="btnSiparisKaydet" name="btnSiparisKaydet" type="button" class="btn btn-warning" value="Kaydet" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <!--   Core JS Files   -->
+    <script src="~/Scripts/js/jquery-3.2.1.min.js"></script>
+    <script src="~/Scripts/js/jquery-ui.min.js"></script>
+    <script src="~/Scripts/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/js/chosen.jquery.js"></script>
+    <script src="~/Scripts/js/ImageSelect.jquery.js"></script>
+    <script src="~/Scripts/js/bootstrap-select.js"></script>
+    <script src="~/Scripts/js/jquery.simplePagination.js"></script>
+    <script src="~/Scripts/js/fontawesome.min.js"></script>
+    <!--  Checkbox, Radio & Switch Plugins -->
+    <script src="~/Scripts/js/bootstrap-checkbox-radio-switch.js"></script>
+    <!--  Charts Plugin -->
+    <script src="~/Scripts/js/chartist.min.js"></script>
+    <!--  Notifications Plugin    -->
+    <script src="~/Scripts/js/bootstrap-notify.js"></script>
+    <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+    <script src="~/Scripts/js/light-bootstrap-dashboard.js"></script>
+    <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+    <script src="~/Scripts/js/demo.js"></script>
+    <!-- Benim javascript dosyam -->
+    <script src="~/Scripts/myscripts/myapp.js"></script>
+    <script src="~/Scripts/myscripts/myorder.js"></script>
+    <script src="~/Scripts/myscripts/myreports.js"></script>
+</body>
+</html>

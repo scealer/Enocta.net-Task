@@ -1,0 +1,26 @@
+﻿@model Users
+@{
+    ViewBag.Title = "Profil Detayları";
+}
+<br />
+<div class="content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="header">
+                <h4 class="title" style="color:blue;"><span class="pe-7s-notebook"></span> &nbsp; Profil Bilgileri</h4>
+                <p class="category">Hesap Ayarları</p>
+            </div>
+            <div class="content">
+                <ul class="list-group">
+                    <li class="list-group-item">Ad : @Model.Name</li>         
+                    <li class="list-group-item">Cinsiyet : @Model.Gender</li>
+                    <li class="list-group-item">Mail : @Model.Mail</li>
+                    <li class="list-group-item">Şifre : @Model.Password</li>
+                </ul>
+                @Html.ActionLink(" Düzenle", "UserEdit", "Home", new { id = Model.User_Id }, new { @class = "btn btn-warning" })
+            </div>
+        </div>
+    </div>
+</div>
+
+

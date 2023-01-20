@@ -1,0 +1,60 @@
+﻿@model Users
+@{
+    ViewBag.Title = "Personel Detayları";
+}
+<div class="content">
+    <div class="container-fluid">
+        <div class="card">
+            <h2 class="header">Personel Detayları</h2>
+            <div class="content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="list-group">
+                            <li class="list-group-item">Personel No : @Model.User_Id</li>
+                            <li class="list-group-item">Ad : @Model.Name</li>
+                            <li class="list-group-item">
+                                Cinsiyet :
+                                @{
+                if (Model.Gender.Equals(true))
+                {
+
+                    <bdo>Erkek</bdo>
+
+}
+else
+{
+                    <bdo>Kadın</bdo>
+}
+                                }
+
+                            </li>
+                            <li class="list-group-item">Mail : @Model.Mail</li>
+                            <li class="list-group-item">Şifre : @Model.Password</li>
+                            <li class="list-group-item">
+                                Rol :
+                                @{
+                if (Model.UserType.Equals(1))
+                {
+
+                    <bdo>Admin</bdo>
+
+}
+else
+{
+                    <bdo>Personel</bdo>
+}
+                                }
+                            </li>
+                        </ul>
+                        @Html.ActionLink(" Geri", "Users", "Home", new { @class = "btn btn-primary" }) &nbsp;
+                        @Html.ActionLink(" Düzenle", "UserEdit", "Home", new { id = Model.User_Id }, new { @class = "btn btn-warning pull-right" }) &nbsp;
+                        @*@Html.ActionLink(" Sil", "", "", new { @class = "btn btn-danger pull-right", @disabled = "true", @readonly= "readonly" }) &nbsp;*@
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+

@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KTOtomasyonModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Logs">
+    <Key>
+      <PropertyRef Name="Log_Id" />
+    </Key>
+    <Property Name="Log_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MethodName" Type="nvarchar" MaxLength="150" />
+    <Property Name="ExMessage" Type="nvarchar(max)" />
+    <Property Name="Message" Type="nvarchar(max)" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedUser" Type="int" />
+  </EntityType>
+  <EntityType Name="Mails">
+    <Key>
+      <PropertyRef Name="Mail_Id" />
+    </Key>
+    <Property Name="Mail_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MailSubject" Type="nvarchar(max)" />
+    <Property Name="MailBody" Type="nvarchar(max)" />
+    <Property Name="MailTo" Type="nvarchar" MaxLength="300" />
+    <Property Name="MailFrom" Type="nvarchar" MaxLength="300" />
+    <Property Name="MailCC" Type="nvarchar" MaxLength="300" />
+    <Property Name="MailBCC" Type="nvarchar" MaxLength="300" />
+    <Property Name="IsBodyHtml" Type="bit" />
+    <Property Name="IsSend" Type="bit" />
+    <Property Name="SendDate" Type="datetime" />
+    <Property Name="ErrorMessage" Type="nvarchar" MaxLength="300" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedUser" Type="int" />
+  </EntityType>
+  <EntityType Name="Operations">
+    <Key>
+      <PropertyRef Name="Operation_Id" />
+    </Key>
+    <Property Name="Operation_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Product_Id" Type="int" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="Price" Type="int" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="OrderDetail_Id" />
+    </Key>
+    <Property Name="OrderDetail_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Order_Id" Type="int" />
+    <Property Name="Operation_Id" Type="int" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="Price" Type="decimal" Precision="12" Scale="6" />
+    <Property Name="TotalPrice" Type="decimal" Precision="12" Scale="6" />
+  </EntityType>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="Order_Id" />
+    </Key>
+    <Property Name="Order_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Debt" Type="nvarchar(max)" />
+    <Property Name="Addition" Type="nvarchar(max)" />
+    <Property Name="OrderDate" Type="datetime" />
+    <Property Name="CreatedUser" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="IsPaid" Type="bit" />
+    <Property Name="IsDelivered" Type="bit" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="Discount" Type="int" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="Product_Id" />
+    </Key>
+    <Property Name="Product_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhotoUrl" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="User_Id" />
+    </Key>
+    <Property Name="User_Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="10" />
+    <Property Name="Gender" Type="bit" />
+    <Property Name="Birthday" Type="datetime" />
+    <Property Name="Mail" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserType" Type="int" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'KTOtomasyon.dbo.vCustomers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vCustomers">
+    <Key>
+      <PropertyRef Name="CustomerName" />
+      <PropertyRef Name="PhoneNumber" />
+    </Key>
+    <Property Name="CustomerName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'KTOtomasyon.dbo.vLastTotalOrder' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vLastTotalOrder">
+    <Key>
+      <PropertyRef Name="Sira" />
+    </Key>
+    <Property Name="Sira" Type="bigint" Nullable="false" />
+    <Property Name="SipMiktar" Type="int" />
+    <Property Name="SipTutar" Type="decimal" Precision="38" Scale="6" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'KTOtomasyon.dbo.vOrders' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vOrders">
+    <Key>
+      <PropertyRef Name="Order_Id" />
+      <PropertyRef Name="CustomerName" />
+      <PropertyRef Name="PhoneNumber" />
+    </Key>
+    <Property Name="Order_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Debt" Type="nvarchar(max)" />
+    <Property Name="Addition" Type="nvarchar(max)" />
+    <Property Name="OrderDate" Type="datetime" />
+    <Property Name="IsDelivered" Type="bit" />
+    <Property Name="Discount" Type="int" />
+    <Property Name="NetTotal" Type="decimal" Precision="38" Scale="6" />
+    <Property Name="TotalPrice" Type="decimal" Precision="38" Scale="6" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'KTOtomasyon.dbo.vTodayTotalOrder' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vTodayTotalOrder">
+    <Key>
+      <PropertyRef Name="Sira" />
+    </Key>
+    <Property Name="Sira" Type="bigint" Nullable="false" />
+    <Property Name="SipMiktar" Type="int" />
+    <Property Name="SipTutar" Type="decimal" Precision="38" Scale="6" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'KTOtomasyon.dbo.vTotalOrder' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vTotalOrder">
+    <Key>
+      <PropertyRef Name="Sira" />
+    </Key>
+    <Property Name="Sira" Type="bigint" Nullable="false" />
+    <Property Name="Yil" Type="int" />
+    <Property Name="Ay" Type="int" />
+    <Property Name="Hafta" Type="int" />
+    <Property Name="SipMiktar" Type="int" />
+    <Property Name="SipTutar" Type="decimal" Precision="38" Scale="6" />
+  </EntityType>
+  <Association Name="FK_Mails_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="Mails" Type="Self.Mails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="User_Id" />
+      </Principal>
+      <Dependent Role="Mails">
+        <PropertyRef Name="CreatedUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Operations_Products">
+    <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+    <End Role="Operations" Type="Self.Operations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="Product_Id" />
+      </Principal>
+      <Dependent Role="Operations">
+        <PropertyRef Name="Product_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderDetail_Operations">
+    <End Role="Operations" Type="Self.Operations" Multiplicity="0..1" />
+    <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Operations">
+        <PropertyRef Name="Operation_Id" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="Operation_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderDetail_Orders">
+    <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
+    <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orders">
+        <PropertyRef Name="Order_Id" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="Order_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_CreatedUser">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="User_Id" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="CreatedUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="AylikSiparisTutar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ToplaTutar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="firstodate" Type="datetime" Mode="In" />
+    <Parameter Name="lastodate" Type="datetime" Mode="In" />
+  </Function>
+  <EntityContainer Name="KTOtomasyonModelStoreContainer">
+    <EntitySet Name="Logs" EntityType="Self.Logs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Mails" EntityType="Self.Mails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Operations" EntityType="Self.Operations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vCustomers" EntityType="Self.vCustomers" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vCustomers].[CustomerName] AS [CustomerName], 
+    [vCustomers].[PhoneNumber] AS [PhoneNumber]
+    FROM [dbo].[vCustomers] AS [vCustomers]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vLastTotalOrder" EntityType="Self.vLastTotalOrder" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vLastTotalOrder].[Sira] AS [Sira], 
+    [vLastTotalOrder].[SipMiktar] AS [SipMiktar], 
+    [vLastTotalOrder].[SipTutar] AS [SipTutar]
+    FROM [dbo].[vLastTotalOrder] AS [vLastTotalOrder]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vOrders" EntityType="Self.vOrders" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vOrders].[Order_Id] AS [Order_Id], 
+    [vOrders].[CustomerName] AS [CustomerName], 
+    [vOrders].[PhoneNumber] AS [PhoneNumber], 
+    [vOrders].[Debt] AS [Debt], 
+    [vOrders].[Addition] AS [Addition], 
+    [vOrders].[OrderDate] AS [OrderDate], 
+    [vOrders].[IsDelivered] AS [IsDelivered], 
+    [vOrders].[Discount] AS [Discount], 
+    [vOrders].[NetTotal] AS [NetTotal], 
+    [vOrders].[TotalPrice] AS [TotalPrice]
+    FROM [dbo].[vOrders] AS [vOrders]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vTodayTotalOrder" EntityType="Self.vTodayTotalOrder" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vTodayTotalOrder].[Sira] AS [Sira], 
+    [vTodayTotalOrder].[SipMiktar] AS [SipMiktar], 
+    [vTodayTotalOrder].[SipTutar] AS [SipTutar]
+    FROM [dbo].[vTodayTotalOrder] AS [vTodayTotalOrder]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vTotalOrder" EntityType="Self.vTotalOrder" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vTotalOrder].[Sira] AS [Sira], 
+    [vTotalOrder].[Yil] AS [Yil], 
+    [vTotalOrder].[Ay] AS [Ay], 
+    [vTotalOrder].[Hafta] AS [Hafta], 
+    [vTotalOrder].[SipMiktar] AS [SipMiktar], 
+    [vTotalOrder].[SipTutar] AS [SipTutar]
+    FROM [dbo].[vTotalOrder] AS [vTotalOrder]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Mails_Users" Association="Self.FK_Mails_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Mails" EntitySet="Mails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Operations_Products" Association="Self.FK_Operations_Products">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="Operations" EntitySet="Operations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderDetail_Operations" Association="Self.FK_OrderDetail_Operations">
+      <End Role="Operations" EntitySet="Operations" />
+      <End Role="OrderDetail" EntitySet="OrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderDetail_Orders" Association="Self.FK_OrderDetail_Orders">
+      <End Role="Orders" EntitySet="Orders" />
+      <End Role="OrderDetail" EntitySet="OrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_CreatedUser" Association="Self.FK_Orders_CreatedUser">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,328 @@
+﻿
+/*Image Gallery*/
+.image-grid {
+    font-size: 0;
+    flex-flow: row wrap;
+    display: flex;
+    padding: .1vh;
+}
+    .image-grid li {
+        flex: auto;
+        width: 100px;
+        margin: .01vh;
+    }
+        .image-grid li:hover {
+            opacity: 0.4;
+            background-color: lightpink;
+        }
+
+    .image-grid img {
+        width: 100px;
+        height: 80px;
+    }
+    .image-grid input {
+        width: 100px;
+        height: 80px;
+    }
+
+
+
+/*table*/
+.the-table {
+    table-layout: fixed;
+    word-wrap: break-word;
+}
+
+
+
+/*Dropdownlist Plugin*/
+.chose-image-small {
+    width: 32px !important;
+    max-height: 32px !important;
+    vertical-align: middle;
+    margin: -3px 3px 0 0;
+}
+
+.chose-image-list {
+    width: 32px !important;
+    max-height: 32px !important;
+    vertical-align: middle;
+    margin: -3px 3px 0 0;
+}
+
+
+
+/*Checkbox*/
+.custom-checkbox {
+    min-height: 1rem;
+    padding-left: 0;
+    margin-right: 0;
+    cursor: pointer;
+}
+.custom-control-input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+    .custom-checkbox .custom-control-indicator {
+        content: "";
+        display: inline-block;
+        position: relative;
+        width: 30px;
+        height: 10px;
+        background-color: #818181;
+        border-radius: 15px;
+        margin-right: 10px;
+        -webkit-transition: background .3s ease;
+        transition: background .3s ease;
+        vertical-align: middle;
+        margin: 0 16px;
+        box-shadow: none;
+    }
+
+        .custom-checkbox .custom-control-indicator:after {
+            content: "";
+            position: absolute;
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            background-color: #f1f1f1;
+            border-radius: 21px;
+            box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4);
+            left: -2px;
+            top: -4px;
+            -webkit-transition: left .3s ease, background .3s ease, box-shadow .1s ease;
+            transition: left .3s ease, background .3s ease, box-shadow .1s ease;
+        }
+
+.custom-checkbox .custom-control-input:checked ~ .custom-control-indicator {
+    background-color: #ff3e00;
+    background-image: none;
+    box-shadow: none !important;
+}
+
+    .custom-checkbox .custom-control-input:checked ~ .custom-control-indicator:after {
+        background-color: #ff3e00;
+        left: 15px;
+    }
+
+    .custom-checkbox .custom-control-input:focus ~ .custom-control-indicator {
+        box-shadow: none !important;
+    }
+
+/*Giriş Panel*/
+.form-login {
+    width: 380px;
+    background-color: #FFF;
+    box-shadow: #ffc70f 0px 0px 10px 1px inset;
+    border-radius: 10px;
+}
+
+/*Siparis*/
+.demo-item {
+    position: fixed;
+    top: 0px;
+    left: 820px;
+    width: 420px;
+    height: 620px;
+    padding: 5px;
+    color: #236AB9;
+    border-left: 0px solid #444;
+    border-left: 1px solid #444;
+    border-right: 1px solid #111;
+    border-bottom: 1px solid #111;
+    box-sizing: border-box;
+}
+
+.scrollproduct {
+    overflow: auto;
+    position: relative;
+    max-height: 400px;
+}
+
+.tablemy td {
+    padding: 5px 0px !important;
+    vertical-align: middle !important;
+}
+
+/*Placeholder*/
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: aqua;
+}
+
+/*Product*/
+.UrunImg{
+    width:50px;
+    height:50px;
+}
+/*Takvim*/
+.ui-datepicker-calendar tr, .ui-datepicker-calendar td, .ui-datepicker-calendar td a, .ui-datepicker-calendar th {
+    font-size: inherit;
+}
+
+div.ui-datepicker {
+    font-size: 62%;
+    width: inherit;
+    height: inherit;
+}
+
+.ui-datepicker-title span {
+    font-size: 100%;
+}
+
+#scrollToTop, #scrollToBottom {
+    cursor: pointer;
+    background-color: #0090CB;
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    color: #fff;
+    font-size: 16pt;
+    text-align: center;
+    text-decoration: none;
+    line-height: 40px;
+}
+
+/*Zaman Çizelgesi*/
+table.agenda {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+    table.agenda td,
+    table.agenda th {
+        border: 1px solid #fff;
+        padding: 12px;
+        text-align: center;
+    }
+    table.agenda td {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        background-color: #D4E4F7;
+        color: black;
+    }
+th:nth-child(1) {
+    background: white;
+    color: black !important;
+}
+th:nth-child(2) {
+    background: white;
+    color: black !important;
+}
+th:nth-child(3) {
+    background: white;
+    color: black !important;
+}
+th:nth-child(4) {
+    background: white;
+    color: black !important;
+}
+th:nth-child(5) {
+    background: white;
+    color: black !important;
+}
+th:nth-child(6) {
+    background: #236AB9;
+    color: white;
+}
+th:nth-child(7) {
+    background: #236AB9;
+    color: white;
+}
+th:nth-child(8) {
+    background: #236AB9;
+    color: white;
+}
+table.agenda tr:nth-child(1) td:first-child {
+    background: #CC9;
+    color: white !important;
+}
+table.agenda tr:nth-child(2) td:first-child {
+    background: #CC9;
+    color: white !important;
+}
+table.agenda tr:nth-child(3) td:first-child {
+    background: #CC9;
+    color: white !important;
+}
+table.agenda tr:nth-child(4) td:first-child {
+    background: #CC9;
+    color: white !important;
+}
+table.agenda tr:nth-child(5) td:first-child {
+    background: #236AB9;
+    color: white;
+}
+table.agenda tr:nth-child(6) td:first-child {
+    background: #236AB9;
+    color: white;
+}
+table.agenda tr:nth-child(7) td:first-child {
+    background: #236AB9;
+    color: white;
+}
+
+/*On-Off Butonu*/
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 45px;
+    height: 20px;
+    vertical-align: middle;
+    margin-top: 8px;
+}
+
+    .switch input {
+        display: none;
+    }
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #A1A6AB;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 10px;
+        width: 8px;
+        left: 1px;
+        bottom: 1px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+input:checked + .slider {
+    background-color: #800080;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(25px);
+    -ms-transform: translateX(25px);
+    transform: translateX(25px);
+}
+
+.slider.round {
+    border-radius: 10px;
+}
+
+    .slider.round:before {
+        border-radius: 50%;
+    }
+
+
+
+/*GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG*/
+

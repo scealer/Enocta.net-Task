@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "Newoperation";
+}
+
+<br />
+<div class="content">
+    <div class="container-fluid">
+        <div class="card col-lg-6">
+            <div class="header">
+                <h4 class="title" style="color:blue;"><span class="pe-7s-notebook"></span> &nbsp;Yeni Tadilat Ekle</h4>
+                <p class="category">Tadilat Bilgileri</p>
+            </div>
+            <div class="content">
+                <form action="@Url.Action("OperationAdder","Home")" method="post">
+                    <p>Ürün Adı: 
+                        <select class="my-select" name="Product_Id" title="Ürün Listesi" id="drpMUrunListe">
+                            <option data-img-src="../img/productions/0'.png" value="0" disabled selected>Ürün Seç..</option>
+                            <optgroup label="Kadın">
+                                <option data-img-src="../img/k/1.jpg" value="1">Kap</option>
+                                <option data-img-src="../img/k/2.jpg" value="2">Elbise</option>
+                                <option data-img-src="../img/k/3.jpg" value="3">Abiye</option>
+                                <option data-img-src="../img/k/4.png" value="4">Etek</option>
+                                <option data-img-src="../img/k/5.jpg" value="5">Pardösü</option>
+                                <option data-img-src="../img/k/6.jpg" value="6">Ferace</option>
+                                <option data-img-src="../img/k/7.png" value="7">Tunik</option>
+                                <option data-img-src="../img/k/8.jpg" value="8">Gömlek</option>
+                                <option data-img-src="../img/k/9.jpg" value="9">Ceket</option>
+                                <option data-img-src="../img/k/10.jpg" value="10">Bluz</option>
+                                <option data-img-src="../img/k/11.jpg" value="11">Kaban</option>
+                                <option data-img-src="../img/k/12.jpg" value="12">T-Shirt</option>
+                                <option data-img-src="../img/k/13.png" value="13">Kaztüyü Mont</option>
+                                <option data-img-src="../img/k/26.jpg" value="14">Kaztüyü Yelek</option>
+                                <option data-img-src="../img/k/24.jpg" value="15">Klasik Yelek</option>
+                                <option data-img-src="../img/k/23.png" value="16">Şişme Yelek</option>
+                                <option data-img-src="../img/k/22.jpg" value="17">Şişme Mont</option>
+                                <option data-img-src="../img/k/14.jpg" value="18">Pantolon</option>
+                                <option data-img-src="../img/k/15.jpg" value="19">Alt Eşofman</option>
+                                <option data-img-src="../img/k/16.jpg" value="20">Üst Eşofman</option>
+                                <option data-img-src="../img/k/18.jpg" value="21">Hırka</option>
+                                <option data-img-src="../img/k/19.jpg" value="22">Kazak</option>
+                                <option data-img-src="../img/k/20.jpg" value="23">Kapri</option>
+                                <option data-img-src="../img/k/21.png" value="24">Manto</option>
+                                <option data-img-src="../img/k/25.jpg" value="25">Şort</option>
+                            </optgroup>
+                            <optgroup label="Erkek">
+                                <option data-img-src="../img/e/1.jpg" value="26">Alt Eşofman</option>
+                                <option data-img-src="../img/e/2.jpg" value="27">Ceket</option>
+                                <option data-img-src="../img/e/3.jpg" value="28">Gömlek</option>
+                                <option data-img-src="../img/e/4.jpg" value="29">Hırka</option>
+                                <option data-img-src="../img/e/5.jpeg" value="30">Kaban</option>
+                                <option data-img-src="../img/e/6.jpg" value="31">Kapri</option>
+                                <option data-img-src="../img/e/7.jpg" value="32">Kazak</option>
+                                <option data-img-src="../img/e/8.jpg" value="33">Kaztüyü Mont</option>
+                                <option data-img-src="../img/e/9.jpg" value="34">Kaztüyü Yelek</option>
+                                <option data-img-src="../img/e/10.png" value="35">Klasik Yelek</option>
+                                <option data-img-src="../img/e/11.jpg" value="36">Palto</option>
+                                <option data-img-src="../img/e/12.jpg" value="37">Pantolon</option>
+                                <option data-img-src="../img/e/13.jpg" value="38">Şişme Mont</option>
+                                <option data-img-src="../img/e/14.jpg" value="39">Şişme Yelek</option>
+                                <option data-img-src="../img/e/15.jpg" value="40">Şort</option>
+                                <option data-img-src="../img/e/16.jpg" value="41">Tişort</option>
+                                <option data-img-src="../img/e/17.jpg" value="42">Üst Eşofman</option>
+                            </optgroup>
+                            <optgroup label="Diğer">
+                                <option data-img-src="../img/productions/0'.png" value="43">Diğer</option>
+                            </optgroup>
+                        </select>
+                    </p>
+                    <p>Tadilat Adı:  @Html.TextBox("Name", "", new { @class = "form-control", @placeholder="Örnek:Kol Daraltma" })</p>
+                    <p>Tadilat Tutarı:  @Html.TextBox("Price", "0", new { @class = "form-control", @onkeypress = "return IsNumber(event)" })</p>
+                    <p><input class="btn btn-primary" type="submit" value="Kaydet" /></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

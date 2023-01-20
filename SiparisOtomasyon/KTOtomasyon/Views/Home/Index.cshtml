@@ -1,0 +1,221 @@
+﻿@model  KTOtomasyon.Models.DisplayOrderDetail
+
+@{
+
+    ViewBag.Title = "Siparişler";
+}
+
+<br />
+<div class="content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="header">
+                <div class="col-lg-4">
+                    <h4 class="title" style="color:#ff3e00;"><span class="fa fa-list-ul"></span> &nbsp; Müşteri Siparişleri</h4>
+                    <p class="category">Tüm Liste</p>
+                </div>
+                <div class="col-lg-8">
+                    <div class="row">
+                        <form action="@Url.Action("Index","Home")" method="post">
+                            <div class="col-lg-3"><button id="itemKey" type="button" class="btn btn-primary" data-toggle="collapse" data-target="#itemSelect" aria-expanded="false" aria-controls="itemSelect"><span class="fa fa-plus-square"></span>Yeni Sipariş</button></div>
+                            @*<div class="col-lg-2 pull-left"><a href="@Url.Action("Index","Home")" type="button" class="btn btn-warning"><span class="fa fa-refresh"></span>Yenile</a></div>*@
+                            <div class="col-lg-6"><input id="filter" name="filter" type="search" class="form-control text-warning" placeholder="Müşteri adı/Fatura No/Telefon No" /></div>
+                            <div class="col-lg-3"><button id="btnFilter" type="submit" value="Ara" class="btn btn-warning"><span class="fa fa-search"></span>Ara</button></div>
+                            @*<div class="col-lg-5"><button type="button" class="btn btn-warning pull-right" data-toggle="modal" data-target="#myModal"><span class="fa fa-plus"></span>Yeni Sipariş</button>
+                                </div>*@
+                        </form>
+                    </div>
+                </div>
+                <div class="row collapse" id="itemSelect">
+                    <div class="col-lg-12">
+                        <div class="col-lg-6">
+                            <b class="header">Kadın</b>
+                            <ul class="image-grid">
+                                <li><input data-toggle="modal" data-target="#myModal" class="btn btn-default" type="image" src="~/img/k/1.jpg" onclick="IslemSec(1 )" title="Kadın Kap" />/li>
+                                <li><input data-toggle="modal" data-target="#myModal" class="btn btn-default" type="image" src="~/img/k/2.jpg" onclick="IslemSec(2 )" title="Kadın Elbise" /></li>
+                                <li><input data-toggle="modal" data-target="#myModal" class="btn btn-default" type="image" src="~/img/k/3.jpg" onclick="IslemSec(3 )" title="Kadın Abiye" /></li>
+                                <li><input data-toggle="modal" data-target="#myModal" class="btn btn-default" type="image" src="~/img/k/4.png" onclick="IslemSec(4 )" title="Kadın Etek" /></li>
+                                <li><input data-toggle="modal" data-target="#myModal" class="btn btn-default" type="image" src="~/img/k/5.jpg" onclick="IslemSec(5 )" title="Kadın Pardösü" /></li>
+                                <li><input data-toggle="modal" data-target="#myModal" class="btn btn-default" type="image" src="~/img/k/6.jpg" onclick="IslemSec(6 )" title="Kadın Ferace" /></li>
+                                <li><input data-toggle="modal" data-target="#myModal" class="btn btn-default" type="image" src="~/img/k/7.png" onclick="IslemSec(7 )" title="Kadın Tunik" /></li>
+                                <li><input data-toggle="modal" data-target="#myModal" class="btn btn-default" type="image" src="~/img/k/8.jpg" onclick="IslemSec(8 )" title="Kadın Gömlek" /></li>
+                                <li><input data-toggle="modal" data-target="#myModal" class="btn btn-default" type="image" src="~/img/k/9.jpg" onclick="IslemSec(9 )" title="Kadın Ceket" /></li>
+                                <li><input data-toggle="modal" data-target="#myModal" class="btn btn-default" type="image" src="~/img/k/10.jpg" onclick="IslemSec(10)" title="Kadın Bluz" /></li>
+                                <li><input data-toggle="modal" data-target="#myModal" class="btn btn-default" type="image" src="~/img/k/11.jpg" onclick="IslemSec(11)" title="Kadın Kaban" /></li>
+                                <li><input data-toggle="modal" data-target="#myModal" class="btn btn-default" type="image" src="~/img/k/12.jpg" onclick="IslemSec(12)" title="Kadın T-Shirt" /></li>
+                                <li><input data-toggle="modal" data-target="#myModal" class="btn btn-default" type="image" src="~/img/k/13.png" onclick="IslemSec(13)" title="Kadın Kaztüyü Mont" /></li>
+                                <li><input data-toggle="modal" data-target="#myModal" class="btn btn-default" type="image" src="~/img/k/26.jpg" onclick="IslemSec(14)" title="Kadın Kaztüyü Yelek" /></li>
+                                <li><input data-toggle="modal" data-target="#myModal" class="btn btn-default" type="image" src="~/img/k/24.jpg" onclick="IslemSec(15)" title="Kadın Klasik Yelek" /></li>
+                                <li><input data-toggle="modal" data-target="#myModal" class="btn btn-default" type="image" src="~/img/k/23.png" onclick="IslemSec(16)" title="Kadın Şişme Yelek" /></li>
+                                <li><input data-toggle="modal" data-target="#myModal" class="btn btn-default" type="image" src="~/img/k/22.jpg" onclick="IslemSec(17)" title="Kadın Şişme Mont" /></li>
+                                <li><input data-toggle="modal" data-target="#myModal" class="btn btn-default" type="image" src="~/img/k/14.jpg" onclick="IslemSec(18)" title="Kadın Pantolon" /></li>
+                                <li><input data-toggle="modal" data-target="#myModal" class="btn btn-default" type="image" src="~/img/k/15.jpg" onclick="IslemSec(19)" title="Kadın Alt Eşofman" /></li>
+                                <li><input data-toggle="modal" data-target="#myModal" class="btn btn-default" type="image" src="~/img/k/16.jpg" onclick="IslemSec(20)" title="Kadın Üst Eşofman" /></li>
+                                <li><input data-toggle="modal" data-target="#myModal" class="btn btn-default" type="image" src="~/img/k/18.jpg" onclick="IslemSec(21)" title="Kadın Hırka" /></li>
+                                <li><input data-toggle="modal" data-target="#myModal" class="btn btn-default" type="image" src="~/img/k/19.jpg" onclick="IslemSec(22)" title="Kadın Kazak" /></li>
+                                <li><input data-toggle="modal" data-target="#myModal" class="btn btn-default" type="image" src="~/img/k/20.jpg" onclick="IslemSec(23)" title="Kadın Kapri" /></li>
+                                <li><input data-toggle="modal" data-target="#myModal" class="btn btn-default" type="image" src="~/img/k/21.png" onclick="IslemSec(24)" title="Kadın Manto" /></li>
+                                <li><input data-toggle="modal" data-target="#myModal" class="btn btn-default" type="image" src="~/img/k/25.jpg" onclick="IslemSec(25)" title="Kadın Şort" /></li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6">
+                            <b class="header">Erkek</b>
+                            <ul class="image-grid">
+                                <li><input data-toggle="modal" data-target="#myModal" class="btn btn-default" type="image" src="~/img/e/1.jpg" onclick="IslemSec(26)" title="Erkek Alt Eşofman" /></li>
+                                <li><input data-toggle="modal" data-target="#myModal" class="btn btn-default" type="image" src="~/img/e/2.jpg" onclick="IslemSec(27)" title="Erkek Ceket" /></li>
+                                <li><input data-toggle="modal" data-target="#myModal" class="btn btn-default" type="image" src="~/img/e/3.jpg" onclick="IslemSec(28)" title="Erkek Gömlek" /></li>
+                                <li><input data-toggle="modal" data-target="#myModal" class="btn btn-default" type="image" src="~/img/e/4.jpg" onclick="IslemSec(29)" title="Erkek Hırka" /></li>
+                                <li><input data-toggle="modal" data-target="#myModal" class="btn btn-default" type="image" src="~/img/e/5.jpeg" onclick="IslemSec(30)" title="Erkek Kaban" /></li>
+                                <li><input data-toggle="modal" data-target="#myModal" class="btn btn-default" type="image" src="~/img/e/6.jpg" onclick="IslemSec(31)" title="Erkek Kapri" /></li>
+                                <li><input data-toggle="modal" data-target="#myModal" class="btn btn-default" type="image" src="~/img/e/7.jpg" onclick="IslemSec(32)" title="Erkek Kazak" /></li>
+                                <li><input data-toggle="modal" data-target="#myModal" class="btn btn-default" type="image" src="~/img/e/8.jpg" onclick="IslemSec(33)" title="Erkek Kaztüyü Mont" /></li>
+                                <li><input data-toggle="modal" data-target="#myModal" class="btn btn-default" type="image" src="~/img/e/9.jpg" onclick="IslemSec(34)" title="Erkek Kaztüyü Yelek" /></li>
+                                <li><input data-toggle="modal" data-target="#myModal" class="btn btn-default" type="image" src="~/img/e/10.png" onclick="IslemSec(35)" title="Erkek Klasik Yelek" /></li>
+                                <li><input data-toggle="modal" data-target="#myModal" class="btn btn-default" type="image" src="~/img/e/11.jpg" onclick="IslemSec(36)" title="Erkek Palto" /></li>
+                                <li><input data-toggle="modal" data-target="#myModal" class="btn btn-default" type="image" src="~/img/e/12.jpg" onclick="IslemSec(37)" title="Erkek Pantolon" /></li>
+                                <li><input data-toggle="modal" data-target="#myModal" class="btn btn-default" type="image" src="~/img/e/13.jpg" onclick="IslemSec(38)" title="Erkek Şişme Mont" /></li>
+                                <li><input data-toggle="modal" data-target="#myModal" class="btn btn-default" type="image" src="~/img/e/14.jpg" onclick="IslemSec(39)" title="Erkek Şişme Yelek" /></li>
+                                <li><input data-toggle="modal" data-target="#myModal" class="btn btn-default" type="image" src="~/img/e/15.jpg" onclick="IslemSec(40)" title="Erkek Şort" /></li>
+                                <li><input data-toggle="modal" data-target="#myModal" class="btn btn-default" type="image" src="~/img/e/16.jpg" onclick="IslemSec(41)" title="Erkek T-Shirt" /></li>
+                                <li><input data-toggle="modal" data-target="#myModal" class="btn btn-default" type="image" src="~/img/e/17.jpg" onclick="IslemSec(42)" title="Erkek Üst Eşofman" /></li>
+                                <li><input data-toggle="modal" data-target="#myModal" class="btn btn-default" type="image" src="~/img/e/17.jpg" onclick="IslemSec(42)" title="Erkek Üst Eşofman" /></li>
+                                <li><input data-toggle="modal" data-target="#myModal" class="btn btn-default" type="image" src="~/img/e/17.jpg" onclick="IslemSec(42)" title="Erkek Üst Eşofman" /></li>
+                                <li><input data-toggle="modal" data-target="#myModal" class="btn btn-default" type="image" src="~/img/e/17.jpg" onclick="IslemSec(42)" title="Erkek Üst Eşofman" /></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-hover the-table" id="anasiparistablo">
+                            <tr>
+                                <td></td>
+                                <td class="text-uppercase"><b>Fiş No</b></td>
+                                <td class="text-uppercase"><b>Müşteri</b></td>
+                                <td class="text-uppercase"><b>Telefon No</b></td>
+                                <td class="text-uppercase"><b>Alındı</b></td>
+                                <td class="text-uppercase"><b>N. Tutar</b></td>
+                                <td class="text-uppercase"><b>T. Tutar</b></td>
+                                <td class="text-uppercase"><b>Teslim Tarihi</b></td>
+
+                                @{
+                                    if (string.IsNullOrEmpty(ViewBag.oname) || (ViewBag.oname == "durum" && ViewBag.otype == "desc"))
+                                    {
+                                        <td class="text-uppercase">@Html.ActionLink("T.Durum", "Index", new { oname = "durum", otype = "asc" }, new { @class = " glyphicon glyphicon-plus", @style = "font-weight:600 !important;" }) </td>
+                                    }
+                                    else if (ViewBag.oname == "durum" && ViewBag.otype == "asc")
+                                    {
+                                        <td class="text-uppercase">@Html.ActionLink("T.Durum", "Index", new { oname = "durum", otype = "desc" }, new { @class = " glyphicon glyphicon-minus", @style = "font-weight:600 !important;" }) </td>
+                                    }
+                                    else
+                                    {
+                                        <td class="text-uppercase">@Html.ActionLink("T.Durum", "Index", new { oname = "durum", otype = "asc" }, new { @class = " glyphicon glyphicon-plus", @style = "font-weight:600 !important;" }) </td>
+                                    }
+
+                                }
+                                <td></td>
+                            </tr>
+
+
+                            @foreach (var order in Model.OrdersList)
+                            {
+                                <tr>
+                                    <td>
+                                        <a href="../Home/OrderDelete?Order_Id=@order.Order_Id" class="btn-xs btn btn-danger"><span class="fa fa-trash"></span></a>
+                                        <button data-toggle="modal" data-target="#myModal" onclick="GetOrder(@order.Order_Id)" class="btn-xs btn btn-warning" style="margin-left:5px;"><span class="fa fa-pencil"></span></button>
+                                    </td>
+                                    <td>@order.Order_Id</td>
+                                    <td>@order.CustomerName</td>
+                                    <td>@order.PhoneNumber</td>
+                                    <td>@order.Debt </td>
+                                    <td>@String.Format("{0:N0}", @order.NetTotal) ₺</td>
+                                    <td>@String.Format("{0:N0}", @order.TotalPrice) ₺</td>
+                                    <td>@order.OrderDate.Value.ToShortDateString()</td>
+                                    <td>
+                                        <label class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" checked="@order.IsDelivered.Value" disabled>
+                                            <span class="custom-control-indicator"></span>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("Receipt","Home", new { @order.Order_Id })" class="btn-xs btn btn-primary" target="_blank" id="BtnYazdir" style="margin-left:5px;"><span class="fa fa-print"></span></a>
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+
+                        <!--simplePagination Plugin-->
+                        <div class="pagination-page"></div>
+
+                        <!--Benim sayfalama yapım yetersiz kaldı.-->
+                        @*<ul class="pagination pagination-sm">
+
+                                <li>
+                                    @{ if (Model.CurrentPage == 1)
+                                        {
+
+                                            @Html.ActionLink("Geri", "Index", new { p = Model.CurrentPage }, new { @class = "text-primary" })
+                                        }
+                                        else
+                                        {
+                                            @Html.ActionLink("Geri", "Index", new { p = Model.CurrentPage - 1 }, new { @class = "text-primary" })
+                                        }
+                                    }
+
+                                    @{
+                                        for (int i = 1; i <= Model.TotalPage; i++)
+                                        {
+                                            if (i == Model.CurrentPage)
+                                            {
+                                                @Html.ActionLink(i.ToString(), "Index", new { p = i }, new { @class = "text-danger" });
+
+                                            }
+                                            else
+                                            {
+                                                @Html.ActionLink(i.ToString(), "Index", new { p = i });
+                                            }
+                                        }
+                                    }
+
+                                    @{ if (Model.CurrentPage == Model.TotalPage)
+                                        {
+
+                                            @Html.ActionLink("İleri", "Index", new { p = Model.CurrentPage }, new { @class = "text-primary" })
+                                        }
+                                        else
+                                        {
+                                            @Html.ActionLink("İleri", "Index", new { p = Model.CurrentPage + 1 }, new { @class = "text-primary" })
+                                        }
+                                    }
+
+
+                                </li>
+                            </ul>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

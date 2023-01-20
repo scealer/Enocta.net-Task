@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7bfb07fe92f245be8fab504722dbbc42" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="KTOtomasyonModel.Logs" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KTOtomasyonModel.Operations" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KTOtomasyonModel.OrderDetail" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KTOtomasyonModel.Orders" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="KTOtomasyonModel.Products" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KTOtomasyonModel.Users" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KTOtomasyonModel.vCustomers" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KTOtomasyonModel.vOrders" Width="1.5" PointX="9.25" PointY="3.125" IsExpanded="true" />
+        <AssociationConnector Association="KTOtomasyonModel.FK_Operations_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="KTOtomasyonModel.FK_OrderDetail_Operations" ManuallyRouted="false" />
+        <AssociationConnector Association="KTOtomasyonModel.FK_OrderDetail_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="KTOtomasyonModel.FK_Orders_CreatedUser" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="KTOtomasyonModel.vTotalOrder" Width="1.5" PointX="8.75" PointY="6.5" />
+        <EntityTypeShape EntityType="KTOtomasyonModel.Mails" Width="1.5" PointX="12.375" PointY="4.625" />
+        <EntityTypeShape EntityType="KTOtomasyonModel.vTodayTotalOrder" Width="1.5" PointX="0.75" PointY="8.75" />
+        <AssociationConnector Association="KTOtomasyonModel.FK_Mails_Users" />
+        <EntityTypeShape EntityType="KTOtomasyonModel.vLastTotalOrder" Width="1.5" PointX="3.375" PointY="8.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

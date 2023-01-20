@@ -1,0 +1,85 @@
+﻿@model KTOtomasyon.Models.DisplayUsers
+
+@{
+    ViewBag.Title = "Personeller";
+}
+<br />
+<div class="content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="header">
+                <div class="col-lg-6">
+                    <h4 class="title" style="color:green;"><span class="fa fa-users"></span> &nbsp; Personeller</h4>
+                    <p class="category">Personel Listesi</p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="category">
+                        <form action="@Url.Action("Users","Home")" method="post">
+                            <div class="col-lg-10"><input name="filter" type="search" class="form-control text-success" placeholder="Ad/Soyad Ara" /></div>
+                            <div class="col-lg-2"><input type="submit" role="img" value="Ara" class="btn btn-success" /></div>
+
+                        </form>
+                    </div>
+                </div> 
+                <div class="row">
+                    <div class="col-lg-12">
+                        <table class="table table-condensed">
+                            <tr>
+                                <td class="text-uppercase"><b>Ad/Soyad</b></td>
+                                <td class="text-uppercase"><b>Mail</b></td>
+                                <td class="text-uppercase"><b>Şifre</b></td>
+                                <td class="text-uppercase"><b>Cinsiyet</b></td>
+                                <td class="text-uppercase"><b>Doğum Tarihi</b></td>
+                                <td></td>
+                            </tr>
+                            @foreach (var user in Model.UsersList.OrderByDescending(x => x.User_Id).Where(x => x.IsDeleted == false))
+                            {
+                                <tr>
+                                    <td>@user.Name</td>
+                                    <td>@user.Mail</td>
+                                    <td>@user.Password</td>
+                                    <td>
+                                        @{
+                                            if (user.Gender.Equals(true))
+                                            {
+
+                                                <bdo>Erkek</bdo>
+
+                                            }
+                                            else
+                                            {
+                                                <bdo>Kadın</bdo>
+                                            }
+
+                                        }
+
+                                    </td>
+                                    <td>@user.Birthday</td>
+                                    <td>@Html.ActionLink(" İncele", "UserDetail", "Home", new { id = user.User_Id }, new { @class = "btn btn-success" }) </td>
+                                </tr>
+                            }
+                        </table>
+                        <ul class="pagination pagination-sm">
+                            <li>
+                                @{
+                                    for (int i = 1; i <= Model.TotalPage; i++)
+                                    {
+                                        if (i == Model.CurrentPage)
+                                        {
+                                            @Html.ActionLink(i.ToString(), "Users", new { p = i }, new { @class = "text-danger" });
+
+                                        }
+                                        else
+                                        {
+                                            @Html.ActionLink(i.ToString(), "Users", new { p = i });
+                                        }
+                                    }
+                                }
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

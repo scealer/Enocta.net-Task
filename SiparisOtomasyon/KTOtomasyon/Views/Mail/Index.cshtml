@@ -1,0 +1,93 @@
+﻿@model IEnumerable<KTOtomasyon.Mails>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MailSubject)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MailBody)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MailTo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MailCC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MailBCC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsBodyHtml)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsSend)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SendDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ErrorMessage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedUser)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MailSubject)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MailBody)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MailTo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MailCC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MailBCC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsBodyHtml)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsSend)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SendDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ErrorMessage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedUser)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Mail_Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Mail_Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Mail_Id })
+        </td>
+    </tr>
+}
+
+</table>

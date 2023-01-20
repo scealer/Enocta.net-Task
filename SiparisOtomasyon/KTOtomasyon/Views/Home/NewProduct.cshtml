@@ -1,0 +1,22 @@
+﻿@model KTOtomasyonEntities
+@{
+    ViewBag.Title = "NewProduct";
+}
+<br />
+<div class="content">
+    <div class="container-fluid">
+        <div class="card col-lg-6">
+            <div class="header">
+                <h4 class="title" style="color:blue;"><span class="pe-7s-notebook"></span> &nbsp;Yeni Ürün Ekle</h4>
+                <p class="category">Ürün Bilgileri</p>
+            </div>
+            <div class="content">
+                <form action="@Url.Action("ProductAdder","Home")" method="post">
+                    <p>Ürün Adı:  @Html.TextBox("Name", "", new { @class = "form-control", @placeholder= "Örnek:Ceket" })</p>
+                    <p>Ürün Resmi:   @Html.TextBox("PhotoUrl", "", new { @class = "form-control", @type="file"})</p>
+                    <p><input class="btn btn-danger" type="submit" value="Kaydet" /></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

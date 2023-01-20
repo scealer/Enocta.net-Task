@@ -1,0 +1,68 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" src="~/favicon.ico">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title> Sample Terzi - Giriş </title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="author" content="Erhan Hızarcı" />
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/animate.min.css" rel="stylesheet" />
+    <link href="~/Content/light-bootstrap-dashboard.css" rel="stylesheet" />
+    <link href="~/Content/chosen.css" rel="stylesheet" />
+    <link href="~/Content/ImageSelect.css" rel="stylesheet" />
+    <link href="~/Content/demo.css" rel="stylesheet" />
+    <link href="~/Content/Flat.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/simplePagination.css" rel="stylesheet" />
+    <link href="~/Content/CSS/font-awesome.min.css" rel="stylesheet" />
+
+</head>
+<body style="background-color:darkcyan;">
+    <nav class="navbar"></nav>
+    <div class="container">
+        @RenderBody()
+    </div>
+    <footer class="footer navbar-fixed-bottom">
+        <div class="container-fluid text-center">
+            <p class="copyright">
+                EHızarcı &copy;
+                @DateTime.Now.Year
+            </p>
+        </div>
+    </footer>
+
+    <!--   Core JS Files   -->
+    <script src="~/Scripts/js/jquery-3.2.1.min.js"></script>
+    <script src="~/Scripts/js/jquery-ui.min.js"></script>
+    <script src="~/Scripts/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/js/chosen.jquery.js"></script>
+    <script src="~/Scripts/js/ImageSelect.jquery.js"></script>
+    <script src="~/Scripts/js/bootstrap-select.js"></script>
+    <script src="~/Scripts/js/jquery.simplePagination.js"></script>
+    <script src="~/Scripts/js/fontawesome.min.js"></script>
+    <!--  Checkbox, Radio & Switch Plugins -->
+    <script src="~/Scripts/js/bootstrap-checkbox-radio-switch.js"></script>
+    <!--  Charts Plugin -->
+    <script src="~/Scripts/js/chartist.min.js"></script>
+    <!--  Notifications Plugin    -->
+    <script src="~/Scripts/js/bootstrap-notify.js"></script>
+    <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+    <script src="~/Scripts/js/light-bootstrap-dashboard.js"></script>
+    <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+    <script src="~/Scripts/js/demo.js"></script>
+    <!-- Benim javascript dosyam -->
+    <script src="~/Scripts/myscripts/myapp.js"></script>
+    <script src="~/Scripts/myscripts/myorder.js"></script>
+    <script src="~/Scripts/myscripts/myreports.js"></script>
+</body>
+</html>

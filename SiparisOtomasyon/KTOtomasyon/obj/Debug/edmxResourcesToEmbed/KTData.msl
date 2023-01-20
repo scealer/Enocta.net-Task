@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="KTOtomasyonModelStoreContainer" CdmEntityContainer="KTOtomasyonEntities">
+    <EntitySetMapping Name="Logs">
+      <EntityTypeMapping TypeName="KTOtomasyonModel.Logs">
+        <MappingFragment StoreEntitySet="Logs">
+          <ScalarProperty Name="Log_Id" ColumnName="Log_Id" />
+          <ScalarProperty Name="MethodName" ColumnName="MethodName" />
+          <ScalarProperty Name="ExMessage" ColumnName="ExMessage" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedUser" ColumnName="CreatedUser" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Operations">
+      <EntityTypeMapping TypeName="KTOtomasyonModel.Operations">
+        <MappingFragment StoreEntitySet="Operations">
+          <ScalarProperty Name="Operation_Id" ColumnName="Operation_Id" />
+          <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderDetail">
+      <EntityTypeMapping TypeName="KTOtomasyonModel.OrderDetail">
+        <MappingFragment StoreEntitySet="OrderDetail">
+          <ScalarProperty Name="OrderDetail_Id" ColumnName="OrderDetail_Id" />
+          <ScalarProperty Name="Order_Id" ColumnName="Order_Id" />
+          <ScalarProperty Name="Operation_Id" ColumnName="Operation_Id" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="KTOtomasyonModel.Orders">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="Order_Id" ColumnName="Order_Id" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Debt" ColumnName="Debt" />
+          <ScalarProperty Name="Addition" ColumnName="Addition" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="CreatedUser" ColumnName="CreatedUser" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsPaid" ColumnName="IsPaid" />
+          <ScalarProperty Name="IsDelivered" ColumnName="IsDelivered" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="KTOtomasyonModel.Products">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="PhotoUrl" ColumnName="PhotoUrl" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="KTOtomasyonModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vCustomers">
+      <EntityTypeMapping TypeName="KTOtomasyonModel.vCustomers">
+        <MappingFragment StoreEntitySet="vCustomers">
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vOrders">
+      <EntityTypeMapping TypeName="KTOtomasyonModel.vOrders">
+        <MappingFragment StoreEntitySet="vOrders">
+          <ScalarProperty Name="Order_Id" ColumnName="Order_Id" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Debt" ColumnName="Debt" />
+          <ScalarProperty Name="Addition" ColumnName="Addition" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="IsDelivered" ColumnName="IsDelivered" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="NetTotal" ColumnName="NetTotal" />
+          <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vTotalOrder">
+      <EntityTypeMapping TypeName="KTOtomasyonModel.vTotalOrder">
+        <MappingFragment StoreEntitySet="vTotalOrder">
+          <ScalarProperty Name="SipTutar" ColumnName="SipTutar" />
+          <ScalarProperty Name="SipMiktar" ColumnName="SipMiktar" />
+          <ScalarProperty Name="Hafta" ColumnName="Hafta" />
+          <ScalarProperty Name="Ay" ColumnName="Ay" />
+          <ScalarProperty Name="Yil" ColumnName="Yil" />
+          <ScalarProperty Name="Sira" ColumnName="Sira" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mails">
+      <EntityTypeMapping TypeName="KTOtomasyonModel.Mails">
+        <MappingFragment StoreEntitySet="Mails">
+          <ScalarProperty Name="MailFrom" ColumnName="MailFrom" />
+          <ScalarProperty Name="CreatedUser" ColumnName="CreatedUser" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+          <ScalarProperty Name="SendDate" ColumnName="SendDate" />
+          <ScalarProperty Name="IsSend" ColumnName="IsSend" />
+          <ScalarProperty Name="IsBodyHtml" ColumnName="IsBodyHtml" />
+          <ScalarProperty Name="MailBCC" ColumnName="MailBCC" />
+          <ScalarProperty Name="MailCC" ColumnName="MailCC" />
+          <ScalarProperty Name="MailTo" ColumnName="MailTo" />
+          <ScalarProperty Name="MailBody" ColumnName="MailBody" />
+          <ScalarProperty Name="MailSubject" ColumnName="MailSubject" />
+          <ScalarProperty Name="Mail_Id" ColumnName="Mail_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vTodayTotalOrder">
+      <EntityTypeMapping TypeName="KTOtomasyonModel.vTodayTotalOrder">
+        <MappingFragment StoreEntitySet="vTodayTotalOrder">
+          <ScalarProperty Name="SipTutar" ColumnName="SipTutar" />
+          <ScalarProperty Name="SipMiktar" ColumnName="SipMiktar" />
+          <ScalarProperty Name="Sira" ColumnName="Sira" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vLastTotalOrder">
+      <EntityTypeMapping TypeName="KTOtomasyonModel.vLastTotalOrder">
+        <MappingFragment StoreEntitySet="vLastTotalOrder">
+          <ScalarProperty Name="SipTutar" ColumnName="SipTutar" />
+          <ScalarProperty Name="SipMiktar" ColumnName="SipMiktar" />
+          <ScalarProperty Name="Sira" ColumnName="Sira" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="AylikSiparisTutar" FunctionName="KTOtomasyonModel.Store.AylikSiparisTutar">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KTOtomasyonModel.AylikSiparisTutar_Result">
+          <ScalarProperty Name="Ocak" ColumnName="Ocak" />
+          <ScalarProperty Name="Subat" ColumnName="Subat" />
+          <ScalarProperty Name="Mart" ColumnName="Mart" />
+          <ScalarProperty Name="Nisan" ColumnName="Nisan" />
+          <ScalarProperty Name="Mayis" ColumnName="Mayis" />
+          <ScalarProperty Name="Haziran" ColumnName="Haziran" />
+          <ScalarProperty Name="Temmuz" ColumnName="Temmuz" />
+          <ScalarProperty Name="Agustos" ColumnName="Agustos" />
+          <ScalarProperty Name="Eylul" ColumnName="Eylul" />
+          <ScalarProperty Name="Ekim" ColumnName="Ekim" />
+          <ScalarProperty Name="Kasim" ColumnName="Kasim" />
+          <ScalarProperty Name="Aralik" ColumnName="Aralik" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ToplaTutar" FunctionName="KTOtomasyonModel.Store.ToplaTutar" />
+  </EntityContainerMapping>
+</Mapping>

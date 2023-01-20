@@ -1,0 +1,32 @@
+USE [KTOtomasyon]
+GO
+
+
+DROP PROCEDURE [dbo].[AYLIKSIPARISRAPOR]
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+-- exec [AYLIKSIPARISRAPOR]
+
+CREATE PROCEDURE [dbo].[AYLIKSIPARISRAPOR]
+AS
+BEGIN
+	SET NOCOUNT ON;
+		
+	SELECT MONTH(ORS.OrderDate) Ay,Sum(ORDET.TotalPrice) ToplamSatis FROM OrderDetail ORDET 
+	INNER JOIN Orders ORS ON ORS.Order_Id = ORDET.Order_Id 
+
+	WHERE ORS.OrderDate BETWEEN '01.01.2018' AND '01.01.2019' 
+	group by  MONTH(ORS.OrderDate)
+
+	-- select Sum(ORDET.TotalPrice) Toplam FROM OrderDetail ORDET 
+END
+GO
+
+

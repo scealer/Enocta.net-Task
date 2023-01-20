@@ -1,0 +1,29 @@
+﻿@model List<KTOtomasyon.Models.FilesViewModel>
+
+@{
+    ViewBag.Title = "Yedek Al";
+    Layout = "~/Views/Shared/_LayoutLog.cshtml";
+}
+<div class="container" id="wrap">
+    <div class="row">
+        <div class="col-md-offset-4">
+            
+            <div class="form-login text-center bg-info" style="padding:15px !important;">
+                <div class="header"><h4>Yedek Database Dosyaları</h4></div>
+                <ol class="list-group-item-info">
+                    @{ foreach (var item in Model)
+            {
+                <li> @item.FileName</li>
+}
+                    }
+                    <li class="list-unstyled divider"></li>
+                    <li class="list-unstyled divider"><a href="@Url.Action("Index","Home")"><b>ANASAYFAYA DÖN</b></a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

@@ -1,0 +1,28 @@
+﻿@model Users
+@{
+    ViewBag.Title = "Personel Düzenle";
+}
+<br />
+<div class="content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="header">
+                <h4 class="title" style="color:blue;"><span class="pe-7s-notebook"></span> &nbsp; Profil Bilgileri</h4>
+                <p class="category">Hesap Güncelle</p>
+            </div>
+            <div class="content">
+                <form action="@Url.Action("UserUpdate","Home")" method="post">
+                    <input name="User_Id" type="hidden" class="form-control" value="@Model.User_Id" />
+                    <input name="IsDeleted" type="hidden" class="form-control" value="@Model.IsDeleted" />
+                    <p>Ad  @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })</p>
+                    <p>Cinsiyet  @Html.TextBoxFor(m => m.Gender, new { @class = "form-control", @readonly= "readonly" })</p>
+                    <p>Doğum Tarihi  @Html.TextBoxFor(m => m.Birthday, new { @class = "form-control", @type = "date" })</p>
+                    <p>Mail  @Html.TextBoxFor(m => m.Mail, new { @class = "form-control", @readonly = "readonly" })</p>
+                    <p>Şifre  @Html.TextBoxFor(m => m.Password, new { @class = "form-control" })</p>
+                    <p><input class="btn btn-success" type="submit" value="Güncelle" /></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
